@@ -13,6 +13,7 @@ public class Sun {
 	private boolean dayTime = true;
 	
 	private Color dayColor = new Color(237, 255, 78);
+	private Color dayColorFrame = new Color(244, 111, 82);
 	private Color nightColor = Color.WHITE;
 	
 	// Konstruktor
@@ -34,6 +35,8 @@ public class Sun {
 	}
 	
 	public void draw(Graphics g) {
+		g.setColor(dayColorFrame);
+		g.fillOval(x-5, y-5, sunRadius+10, sunRadius+10);
 		if(dayTime) {
 			g.setColor(dayColor);
 		} else {
