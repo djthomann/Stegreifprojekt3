@@ -11,7 +11,7 @@ public class House {
 	private int height;
 	
 	private final int windowSize;
-	private final int frameSize = 8; 
+	private final int frameSize = 2; 
 	
 	int chimneyPosition;
 	private final int chimneyOffsetY = 10;
@@ -70,15 +70,7 @@ public class House {
 		g.fillRect(x, y, width, 20);
 		
 		
-		// Fenster --> Methode drawWindows?
-		/*g.setColor(frameColor);
-		g.drawRect(x , y,  windowSize + frameSize / 2, windowSize + frameSize / 2);*/
-		if(lightOn) {
-			g.setColor(windowColorOn);
-		} else {
-			g.setColor(windowColorOff);
-		}
-		
+		// Fenster und Fensterrahme --> Methode drawWindows? --> evtl. in separate Funktionen aufteilen		
 		int windowX = x;
 		for(int j = 0; j < stories; j++) {
 			for(int i = 0; i < windows; i++) {
@@ -88,10 +80,14 @@ public class House {
 					} else {
 						windowX = x + a * (i+1) - a / 2;
 					}
-					
+					g.setColor(frameColor);
+					g.fillRect(windowX  + windowSize * i - frameSize / 2, y + 40 * (j + 1) - frameSize / 2, windowSize + frameSize, windowSize + frameSize);
+					if(lightOn) {
+						g.setColor(windowColorOn);
+					} else {
+						g.setColor(windowColorOff);
+					}
 					g.fillRect(windowX  + windowSize * i, y + 40 * (j + 1), windowSize, windowSize);
-		
-				
 			}
 		}
 		
