@@ -28,8 +28,9 @@ public class Hogsmeade extends JPanel implements MouseListener {
 	private static House house = new House(50, HogsmeadeApp.getHeight() - streetHeight - 200, 150, 200, 3, 3,Color.GREEN);
 	private static House house2 = new House(250, HogsmeadeApp.getHeight() - streetHeight - 150, 200, 150, 5, 2,Color.MAGENTA);
 	private static House house3 = new House(500, HogsmeadeApp.getHeight() - streetHeight - 250, 150, 250, 4, 5, Color.BLUE);
-	Tree tree = new Tree(450, HogsmeadeApp.getHeight() - streetHeight - 100, 50, 100);
-	Tree tree2 = new Tree(200, HogsmeadeApp.getHeight() - streetHeight - 100, 50, 100);
+	Tree tree = new Tree(460, HogsmeadeApp.getHeight() - streetHeight - 100, 50, 100);
+	Tree tree2 = new Tree(215, HogsmeadeApp.getHeight() - streetHeight - 100, 50, 100);
+	Tree tree3 = new Tree(730, HogsmeadeApp.getHeight() - streetHeight - 100, 50, 100);
 	StreetLamp lamp = new StreetLamp(20, HogsmeadeApp.getHeight() - streetHeight - 100, 100);
 	StreetLamp lamp2 = new StreetLamp(660, HogsmeadeApp.getHeight() - streetHeight - 100, 100);
 	Sun sun = new Sun(HogsmeadeApp.getWidth() / 2, 50, 50);
@@ -88,6 +89,7 @@ public class Hogsmeade extends JPanel implements MouseListener {
 		// Bäume
 		tree.draw(g2d);
 		tree2.draw(g2d);
+		tree3.draw(g2d);
 		
 		// Lanternen
 		lamp.draw(g2d, sun.getDayTime());
