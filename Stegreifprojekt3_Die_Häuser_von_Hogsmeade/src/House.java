@@ -61,6 +61,10 @@ public class House {
 		// Haus
 		g.setColor(color);
 		g.fillRect(x, y, width, height);
+		Color darker = color.darker();
+		g.setColor(darker);
+		g.fillRect(x, y + (height - height / 4), width, height / 4);
+		
 		// Dach
 		g.setColor(roofColor);
 		g.fillRect(x, y, width, 20);
