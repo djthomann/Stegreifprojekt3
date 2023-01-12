@@ -79,10 +79,19 @@ public class House {
 			g.setColor(windowColorOff);
 		}
 		
+		int windowX = x;
 		for(int j = 0; j < stories; j++) {
 			for(int i = 0; i < windows; i++) {
-				int a = width / windows;
-				g.fillRect(x + a * i + a/4 , y + 40 * (j + 1), windowSize, windowSize);
+				int a = (width - (windows*windowSize)) / windows;
+					if(i == 0) {
+						windowX = x + a / 2;
+					} else {
+						windowX = x + a * (i+1) - a / 2;
+					}
+					
+					g.fillRect(windowX  + windowSize * i, y + 40 * (j + 1), windowSize, windowSize);
+		
+				
 			}
 		}
 		
