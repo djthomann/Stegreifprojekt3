@@ -5,6 +5,7 @@ public class StarrySky {
 	// Attribute
 	int amount;
 	Star[] stars;
+	Cloud[] clouds;
 	
 	// Konstruktor
 	public StarrySky(int amount) {
@@ -13,11 +14,21 @@ public class StarrySky {
 		for(int i = 0; i < amount; i++) {
 			this.stars[i] = new Star(i);
 		}
+		this.clouds = new Cloud[amount / 10];
+		for(int i = 0; i < clouds.length; i++) {
+			this.clouds[i] = new Cloud();
+		}
 	}
 	
-	// Objekt-Methoden
-	public void draw(Graphics g) {
-		for(int i = 0; i < amount; i++) {
+	// Objekt-Methoden	
+	public void drawClouds(Graphics g) {
+		for(int i = 0; i < clouds.length; i++) {
+			clouds[i].draw(g);
+		}
+	}
+	
+	public void drawStars(Graphics g) {
+		for(int i = 0; i < stars.length; i++) {
 			stars[i].draw(g);
 		}
 	}

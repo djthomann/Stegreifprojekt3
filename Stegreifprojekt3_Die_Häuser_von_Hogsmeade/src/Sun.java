@@ -38,20 +38,20 @@ public class Sun {
 	
 	public void draw(Graphics g) {
 		if(dayTime) {
+			g.setColor(dayColorFrame);
+			g.fillOval(x-5, y-5, sunRadius+10, sunRadius+10);
 			g.setColor(dayColor);
+			g.fillOval(x, y, sunRadius, sunRadius);
+			sky.drawClouds(g);
 		} else {
 			g.setColor(nightColor);
-			sky.draw(g);
+			sky.drawStars(g);
+			g.setColor(dayColorFrame);
+			g.fillOval(x-5, y-5, sunRadius+10, sunRadius+10);
+			g.setColor(nightColor);
+			g.fillOval(x, y, sunRadius, sunRadius);
 		}
-		g.setColor(dayColorFrame);
-		g.fillOval(x-5, y-5, sunRadius+10, sunRadius+10);
 		
-		if(dayTime) {
-			g.setColor(dayColor);
-		} else {
-			g.setColor(nightColor);
-		}
-		g.fillOval(x, y, sunRadius, sunRadius);
 	}
 	
 	/*public void drawStars(Graphics g) {
