@@ -16,6 +16,8 @@ public class Sun {
 	private Color dayColorFrame = new Color(244, 111, 82);
 	private Color nightColor = Color.WHITE;
 	
+	StarrySky sky = new StarrySky(100);
+	
 	// Konstruktor
 	public Sun(int x, int y, int radius) {
 		this.x = x;
@@ -35,18 +37,24 @@ public class Sun {
 	}
 	
 	public void draw(Graphics g) {
-		g.setColor(dayColorFrame);
-		g.fillOval(x-5, y-5, sunRadius+10, sunRadius+10);
 		if(dayTime) {
 			g.setColor(dayColor);
 		} else {
 			g.setColor(nightColor);
-			drawStars(g);
+			sky.draw(g);
+		}
+		g.setColor(dayColorFrame);
+		g.fillOval(x-5, y-5, sunRadius+10, sunRadius+10);
+		
+		if(dayTime) {
+			g.setColor(dayColor);
+		} else {
+			g.setColor(nightColor);
 		}
 		g.fillOval(x, y, sunRadius, sunRadius);
 	}
 	
-	public void drawStars(Graphics g) {
+	/*public void drawStars(Graphics g) {
 		g.setColor(nightColor);
 		for(int i = 0; i < 100; i++) {
 			int posX = (int)(Math.random() * HogsmeadeApp.getWidth());
@@ -54,7 +62,7 @@ public class Sun {
 			g.fillOval(posX, posY, maxStarRadius / (i % 5 + 1), maxStarRadius / (i % 5 + 1));
 		}
 		
-	}
+	}*/
 	
 	// Getter und Setter
 	public int getX() {

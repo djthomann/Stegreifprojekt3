@@ -71,7 +71,7 @@ public class Hogsmeade extends JPanel implements MouseListener {
 		g2d.fillRect(0, 0, getWidth(), getHeight());
 		//hier wird alles gezeichnet ...
 		
-		// Himmel und Sonne/Mond
+		// Sterne und Sonne/Mond
 		sun.draw(g2d);
 		
 		// Straße
