@@ -105,8 +105,8 @@ public class Hogsmeade extends JPanel implements MouseListener {
 		
 		sun.setDayTime(sun.switchTime(x, y));
 		house.setLight(house.switchLight(x, y));
-		house2.setLight(house.switchLight(x, y));
-		house3.setLight(house.switchLight(x, y));
+		house2.setLight(house2.switchLight(x, y));
+		house3.setLight(house3.switchLight(x, y));
 		
 		// hier sollte dann der Maus-Event entsprechend verarbeitet werden
 		
