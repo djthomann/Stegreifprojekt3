@@ -61,18 +61,13 @@ public class House {
 	}
 	
 	public void draw(Graphics g) {
-		// Haus
+		// Haus + Fenster
 		g.setColor(color);
 		drawStories(g);
 		
 		// Dach
 		g.setColor(roofColor);
 		g.fillRect(x, y, width, roofHeight);
-		
-		
-		// Fenster und Fensterrahme --> Methode drawWindows? --> evtl. in separate Funktionen aufteilen		
-		int windowX = x;
-		int windowY = y;
 		
 		// Schornstein
 		g.setColor(chimneyColor);
@@ -94,19 +89,15 @@ public class House {
 	}
 	
 	public void drawWindows(Graphics g, int currentStory) {
-		int windowX = x;
-		int windowY = y;
-		
+		int windowX = x;		
 		for(int i = 0; i < windows; i++) {
 			// Spacing between windows | a --> left and right, b --> up and down 
 			int a = (width - (windows*windowSize)) / windows;
 			int b = (storyHeight - windowSize) / 2;
 			if(i == 0) {
 				windowX = x + a / 2;
-				windowY = y + a / 2;
 			} else {
 				windowX = x + a * (i+1) - a / 2;
-				windowY = y + a * (i+1) - a / 2;
 			}
 			g.setColor(frameColor);
 			g.fillRect(windowX  + windowSize * i - frameSize / 2, y + storyHeight * (currentStory + 1) - windowSize - frameSize / 2, windowSize + frameSize, windowSize + frameSize);
@@ -115,10 +106,7 @@ public class House {
 			} else {
 				g.setColor(windowColorOff);
 			}
-			
 			g.fillRect(windowX  + windowSize * i, y + (storyHeight) * (currentStory + 1) - windowSize, windowSize, windowSize);
-			
-			
 		}
 	}
 	
