@@ -15,7 +15,7 @@ public class Star {
 	public Star(int number) {
 		this.x = (int)(Math.random() * HogsmeadeApp.getWidth());
 		this.y= (int)(Math.random() * HogsmeadeApp.getHeight() - Hogsmeade.streetHeight);
-		this.radius = number % 5;
+		this.radius = (number % 5) + 1;
 		
 	}
 	
