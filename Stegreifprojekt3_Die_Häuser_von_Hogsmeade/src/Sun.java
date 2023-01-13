@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class Sun {
 
@@ -36,7 +37,7 @@ public class Sun {
 		
 	}
 	
-	public void draw(Graphics g) {
+	public void draw(Graphics2D g) {
 		if(dayTime) {
 			g.setColor(dayColorFrame);
 			g.fillOval(x-5, y-5, sunRadius+10, sunRadius+10);

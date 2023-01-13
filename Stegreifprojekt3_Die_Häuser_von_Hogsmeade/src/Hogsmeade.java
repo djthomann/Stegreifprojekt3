@@ -1,3 +1,4 @@
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -63,6 +64,7 @@ public class Hogsmeade extends JPanel implements MouseListener {
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 		RenderingHints.VALUE_ANTIALIAS_ON);
+		
 		super.paint(g);
 		
 		// Beispiel fuer das Zeichnen des Himmels
@@ -78,7 +80,7 @@ public class Hogsmeade extends JPanel implements MouseListener {
 		sun.draw(g2d);
 		
 		// Straße
-		g.setColor(Color.GRAY);
+		g2d.setColor(Color.GRAY);
 		g2d.fillRect(0, getHeight() - streetHeight, getWidth(), getHeight());
 		
 		// Häuser
