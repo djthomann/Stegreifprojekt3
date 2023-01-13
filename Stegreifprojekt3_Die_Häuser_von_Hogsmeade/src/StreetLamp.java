@@ -1,5 +1,7 @@
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class StreetLamp {
 
@@ -24,17 +26,21 @@ public class StreetLamp {
 	}
 	
 	// Objekt-Methoden
-	public void draw(Graphics g, boolean dayTime) {
+	public void draw(Graphics2D g, boolean dayTime) {
 		g.setColor(postColor);
 		g.fillRect(x, y, width, height);
-		
+		AlphaComposite ac1 = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.6f);
+		g.setComposite(ac1);
+		g.setColor(Color.LIGHT_GRAY);
+		g.fillOval(x - lightRadius / 2 + width / 2, y - lightRadius / 2, lightRadius, lightRadius);
 		if(!dayTime) {
 			g.setColor(lightColor);
-			g.fillOval(x - lightRadius / 2 + width / 2 , y - lightRadius / 2, lightRadius, lightRadius);
+			g.fillArc(x - lightRadius / 2 + width / 2 , y - lightRadius / 2, lightRadius, lightRadius, 180, 180);
 		}
-		
-		g.setColor(Color.GRAY);
-		g.fillOval(x - lanternRadius / 2 + width / 2 , y - lanternRadius / 2, lanternRadius, lanternRadius);
+		ac1 = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f);
+		g.setComposite(ac1);
+		g.setColor(postColor);
+		g.fillArc(x - lightRadius / 2 + width / 2 , y - lightRadius / 2, lightRadius, lightRadius, 0, 180);
 	}
 	
 }
