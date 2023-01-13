@@ -11,7 +11,7 @@ public class House {
 	private int height;
 	
 	private final int windowSize;
-	private final int frameSize = 2; 
+	private final int frameSize = 4; 
 	
 	int chimneyPosition;
 	private final int chimneyOffsetY = 10;
@@ -29,6 +29,8 @@ public class House {
 	private boolean lightOn;
 	
 	private int stories;
+	private int storyHeight;
+	private static int roofHeight = 20;
 	private int windows;
 	
 	// Constructor
@@ -41,9 +43,10 @@ public class House {
 		
 		this.color = color;
 		this.windows = windows;
-		this.windowSize = width / windows - 20;
+		this.windowSize = width / (windows+3);
 		
 		this.stories = stories;
+		this.storyHeight = (height - roofHeight) / stories;
 		
 		chimneyPosition = (int)(Math.random() * (width - chimneyWidth + 1));
 	}
@@ -60,42 +63,63 @@ public class House {
 	public void draw(Graphics g) {
 		// Haus
 		g.setColor(color);
-		g.fillRect(x, y, width, height);
-		Color darker = color.darker();
-		g.setColor(darker);
-		g.fillRect(x, y + (height - height / 4), width, height / 4);
+		drawStories(g);
 		
 		// Dach
 		g.setColor(roofColor);
-		g.fillRect(x, y, width, 20);
+		g.fillRect(x, y, width, roofHeight);
 		
 		
 		// Fenster und Fensterrahme --> Methode drawWindows? --> evtl. in separate Funktionen aufteilen		
 		int windowX = x;
-		for(int j = 0; j < stories; j++) {
-			for(int i = 0; i < windows; i++) {
-				int a = (width - (windows*windowSize)) / windows;
-					if(i == 0) {
-						windowX = x + a / 2;
-					} else {
-						windowX = x + a * (i+1) - a / 2;
-					}
-					g.setColor(frameColor);
-					g.fillRect(windowX  + windowSize * i - frameSize / 2, y + 40 * (j + 1) - frameSize / 2, windowSize + frameSize, windowSize + frameSize);
-					if(lightOn) {
-						g.setColor(windowColorOn);
-					} else {
-						g.setColor(windowColorOff);
-					}
-					g.fillRect(windowX  + windowSize * i, y + 40 * (j + 1), windowSize, windowSize);
-			}
-		}
+		int windowY = y;
 		
 		// Schornstein
 		g.setColor(chimneyColor);
 		g.fillRect(x + chimneyPosition, y - chimneyHeight, chimneyWidth, chimneyHeight + chimneyOffsetY);
 		g.setColor(roofColor);
 		g.fillRect(x + chimneyPosition, y - chimneyHeight - 10, chimneyWidth, 10);
+	}
+	
+	public void drawStories(Graphics g) {
+		Color newColor = color;
+		for(int j = 0; j < stories; j++) {
+			
+			g.setColor(newColor);
+			g.fillRect(x, y  + + roofHeight + storyHeight * j, width, storyHeight);
+			newColor = newColor.darker();
+			
+			drawWindows(g, j);
+		}
+	}
+	
+	public void drawWindows(Graphics g, int currentStory) {
+		int windowX = x;
+		int windowY = y;
+		
+		for(int i = 0; i < windows; i++) {
+			// Spacing between windows | a --> left and right, b --> up and down 
+			int a = (width - (windows*windowSize)) / windows;
+			int b = (storyHeight - windowSize) / 2;
+			if(i == 0) {
+				windowX = x + a / 2;
+				windowY = y + a / 2;
+			} else {
+				windowX = x + a * (i+1) - a / 2;
+				windowY = y + a * (i+1) - a / 2;
+			}
+			g.setColor(frameColor);
+			g.fillRect(windowX  + windowSize * i - frameSize / 2, y + storyHeight * (currentStory + 1) - windowSize - frameSize / 2, windowSize + frameSize, windowSize + frameSize);
+			if(lightOn) {
+				g.setColor(windowColorOn);
+			} else {
+				g.setColor(windowColorOff);
+			}
+			
+			g.fillRect(windowX  + windowSize * i, y + (storyHeight) * (currentStory + 1) - windowSize, windowSize, windowSize);
+			
+			
+		}
 	}
 	
 	// Getters and Setters
