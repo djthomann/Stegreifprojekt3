@@ -17,7 +17,7 @@ public class Sun {
 	private Color dayColorFrame = new Color(244, 111, 82);
 	private Color nightColor = Color.WHITE;
 	
-	StarrySky sky = new StarrySky(100);
+	Sky sky = new Sky(100);
 	
 	// Konstruktor
 	public Sun(int x, int y, int radius) {

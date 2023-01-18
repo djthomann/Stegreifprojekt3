@@ -2,7 +2,7 @@ import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-public class StarrySky {
+public class Sky {
 	
 	// Attribute
 	int amount;
@@ -10,7 +10,7 @@ public class StarrySky {
 	Cloud[] clouds;
 	
 	// Konstruktor
-	public StarrySky(int amount) {
+	public Sky(int amount) {
 		this.amount = amount;
 		this.stars = new Star[amount];
 		for(int i = 0; i < amount; i++) {
