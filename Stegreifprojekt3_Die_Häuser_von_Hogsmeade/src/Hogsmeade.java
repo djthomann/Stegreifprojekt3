@@ -67,14 +67,13 @@ public class Hogsmeade extends JPanel implements MouseListener {
 		
 		super.paint(g);
 		
-		// Beispiel fuer das Zeichnen des Himmels
+		// Himmel
 		if(sun.getDayTime()) {
 			g2d.setColor(daySky);	
 		} else {
 			g2d.setColor(nightSky);
 		}
 		g2d.fillRect(0, 0, getWidth(), getHeight());
-		//hier wird alles gezeichnet ...
 		
 		// Sterne und Sonne/Mond
 		sun.draw(g2d);
