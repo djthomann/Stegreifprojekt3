@@ -18,24 +18,25 @@ import javax.swing.JPanel;
  * @author Joerg Berdux
  * @version 1.0
  */
+
+// TODO: CHANGE NAME FOR CONSTANTS 
+// TODO: CONSTRUCT EMPTY HOUSES 
+
 public class Hogsmeade extends JPanel implements MouseListener {
 
 	private static final long serialVersionUID = 1L;
-	
-	private final static Color nightSky = Color.BLACK;
-	private final static Color daySky = new Color(50, 100, 200);
-	public final static int streetHeight = 100;
-	
-	private static House house = new House(50, HogsmeadeApp.getHeight() - streetHeight - 200, 150, 200, 3, 3,Color.GREEN);
-	private static House house2 = new House(250, HogsmeadeApp.getHeight() - streetHeight - 150, 200, 150, 5, 2,Color.MAGENTA);
-	private static House house3 = new House(500, HogsmeadeApp.getHeight() - streetHeight - 250, 150, 250, 4, 4, Color.BLUE);
-	Tree tree = new Tree(460, HogsmeadeApp.getHeight() - streetHeight - 100, 50, 100);
-	Tree tree2 = new Tree(215, HogsmeadeApp.getHeight() - streetHeight - 100, 50, 100);
-	Tree tree3 = new Tree(730, HogsmeadeApp.getHeight() - streetHeight - 100, 50, 100);
-	StreetLamp lamp = new StreetLamp(20, HogsmeadeApp.getHeight() - streetHeight - 100, 100);
-	StreetLamp lamp2 = new StreetLamp(660, HogsmeadeApp.getHeight() - streetHeight - 100, 100);
-	Sun sun = new Sun(HogsmeadeApp.getWidth() / 2, 50, 50);
 
+	final Color nightSky;
+	final Color daySky;
+	final static int streetHeight = 100;
+	final int numberOfHouses = 5;
+	
+	// Objects in the scene
+	private House[] houses;
+	private Tree[] trees;
+	private StreetLamp[] lamps;
+	private Sun sun;
+	
 	/**
 	 * Initialisierung des Panels und setzen des MouseListerns
 	 * fuer die Verwendung von Maus-Ereignissen
@@ -49,6 +50,26 @@ public class Hogsmeade extends JPanel implements MouseListener {
 		this.addMouseListener(this);
 		
 		// Initialisiere Haeuser, Baeume, Sonne ...
+		nightSky = Color.BLACK;
+		daySky = new Color(50, 100, 200);
+		
+		houses = new House[numberOfHouses];
+		houses[0] = new House(50, HogsmeadeApp.getHeight() - streetHeight - 200, 150, 200, 3, 3,Color.GREEN);
+		houses[1] = new House(250, HogsmeadeApp.getHeight() - streetHeight - 150, 200, 150, 5, 2,Color.MAGENTA);
+		houses[2] = new House(500, HogsmeadeApp.getHeight() - streetHeight - 250, 150, 250, 4, 4, Color.BLUE);
+		houses[3] = new House();
+		houses[4] = new House();
+		
+		trees = new Tree[3];
+		trees[0] = new Tree(460, HogsmeadeApp.getHeight() - streetHeight - 100, 50, 100);
+		trees[1] = new Tree(215, HogsmeadeApp.getHeight() - streetHeight - 100, 50, 100);
+		trees[2] = new Tree(730, HogsmeadeApp.getHeight() - streetHeight - 100, 50, 100);
+		
+		lamps = new StreetLamp[2];
+		lamps[0] = new StreetLamp(20, HogsmeadeApp.getHeight() - streetHeight - 100, 100);
+		lamps[1] = new StreetLamp(660, HogsmeadeApp.getHeight() - streetHeight - 100, 100);
+		
+		sun = new Sun(HogsmeadeApp.getWidth() / 2, 50, 50);
 		
 	}
 	
@@ -83,18 +104,19 @@ public class Hogsmeade extends JPanel implements MouseListener {
 		g2d.fillRect(0, getHeight() - streetHeight, getWidth(), getHeight());
 		
 		// Häuser
-		house.draw(g2d);
-		house2.draw(g2d);
-		house3.draw(g2d);
+		for(int i = 0; i < numberOfHouses; i++) {
+			houses[i].draw(g2d);
+		}
 		
 		// Bäume
-		tree.draw(g2d);
-		tree2.draw(g2d);
-		tree3.draw(g2d);
+		for(int i = 0; i < trees.length; i++) {
+			trees[i].draw(g2d);
+		}
 		
 		// Lanternen
-		lamp.draw(g2d, sun.getDayTime());
-		lamp2.draw(g2d, sun.getDayTime());
+		for(int i = 0; i < lamps.length; i++) {
+			lamps[i].draw(g2d, sun.getDayTime());
+		}
 	}
 	
 	
@@ -112,12 +134,13 @@ public class Hogsmeade extends JPanel implements MouseListener {
 		x = e.getX(); // x-Koordinate, an der Mausereignis stattgefunden hat
 		y = e.getY(); // y-Koordinate, an der Mausereignis stattgefunden hat
 		
-		sun.setDayTime(sun.switchTime(x, y));
-		house.setLight(house.switchLight(x, y));
-		house2.setLight(house2.switchLight(x, y));
-		house3.setLight(house3.switchLight(x, y));
-		
 		// hier sollte dann der Maus-Event entsprechend verarbeitet werden
+		
+		sun.setDayTime(sun.switchTime(x, y));
+		
+		for(int i = 0; i < numberOfHouses; i++) {
+			houses[i].setLight(houses[i].switchLight(x, y));
+		}
 		
 		// nach jeder Veraenderung soll der Graphik-Kontext neu gezeichnet werden
 		repaint();
@@ -149,5 +172,10 @@ public class Hogsmeade extends JPanel implements MouseListener {
 	 */
 	public void mouseReleased(MouseEvent e){
 		// diese Methode bleibt einfach leer
+	}
+	
+	// Getter und Setter
+	public static int getStreetHeight() {
+		return streetHeight;
 	}
 }

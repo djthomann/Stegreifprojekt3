@@ -51,6 +51,11 @@ public class House {
 		chimneyPosition = (int)(Math.random() * (width - chimneyWidth + 1));
 	}
 	
+	public House() {
+		this.windowSize = 0;
+		
+	}
+	
 	// Object Methods
 	public boolean switchLight(int x, int y) {
 		if(x >= this.x && x <= this.x + width && y >= this.y && y <= this.y + height) {

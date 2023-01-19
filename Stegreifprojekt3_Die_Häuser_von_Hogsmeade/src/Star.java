@@ -14,7 +14,7 @@ public class Star {
 	// Konstruktor
 	public Star(int number) {
 		this.x = (int)(Math.random() * HogsmeadeApp.getWidth());
-		this.y= (int)(Math.random() * HogsmeadeApp.getHeight() - Hogsmeade.streetHeight);
+		this.y= (int)(Math.random() * HogsmeadeApp.getHeight() - Hogsmeade.getStreetHeight());
 		this.radius = (number % 5) + 1;
 		
 	}
