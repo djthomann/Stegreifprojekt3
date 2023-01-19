@@ -14,7 +14,7 @@ public class HogsmeadeApp {
 	 * 
 	 * @param args wird nicht interpretiert
 	 */
-	private final static int WIDTH = 900;
+	private final static int WIDTH = 1100;
 	private final static int HEIGHT = 500;
 	
 	// Getter und Setter
