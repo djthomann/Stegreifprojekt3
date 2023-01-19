@@ -57,17 +57,18 @@ public class Hogsmeade extends JPanel implements MouseListener {
 		houses[0] = new House(50, HogsmeadeApp.getHeight() - streetHeight - 200, 150, 200, 3, 3,Color.GREEN);
 		houses[1] = new House(250, HogsmeadeApp.getHeight() - streetHeight - 150, 200, 150, 5, 2,Color.MAGENTA);
 		houses[2] = new House(500, HogsmeadeApp.getHeight() - streetHeight - 250, 150, 250, 4, 4, Color.BLUE);
-		houses[3] = new House();
-		houses[4] = new House();
+		houses[3] = new House(670, HogsmeadeApp.getHeight() - streetHeight - 250, 150, 250, 4, 4, Color.RED);
+		houses[4] = new House(850, HogsmeadeApp.getHeight() - streetHeight - 250, 150, 250, 4, 4, Color.YELLOW);
 		
 		trees = new Tree[3];
 		trees[0] = new Tree(460, HogsmeadeApp.getHeight() - streetHeight - 100, 50, 100);
 		trees[1] = new Tree(215, HogsmeadeApp.getHeight() - streetHeight - 100, 50, 100);
 		trees[2] = new Tree(730, HogsmeadeApp.getHeight() - streetHeight - 100, 50, 100);
 		
-		lamps = new StreetLamp[2];
+		lamps = new StreetLamp[3];
 		lamps[0] = new StreetLamp(20, HogsmeadeApp.getHeight() - streetHeight - 100, 100);
 		lamps[1] = new StreetLamp(660, HogsmeadeApp.getHeight() - streetHeight - 100, 100);
+		lamps[2] = new StreetLamp(1030, HogsmeadeApp.getHeight() - streetHeight - 100, 100);
 		
 		sun = new Sun(HogsmeadeApp.getWidth() / 2, 50, 50);
 		
