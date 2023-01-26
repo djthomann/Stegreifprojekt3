@@ -16,7 +16,6 @@ public class Star {
 		this.x = (int)(Math.random() * HogsmeadeApp.getWidth());
 		this.y= (int)(Math.random() * HogsmeadeApp.getHeight() - Hogsmeade.getStreetHeight());
 		this.radius = (number % 5) + 1;
-		
 	}
 	
 	// Objekt-Methoden
@@ -37,5 +36,4 @@ public class Star {
 	public int getRadius() {
 		return radius;
 	}
-	
 }

@@ -9,7 +9,7 @@ public class StreetLamp {
 	private int x;
 	private int y;
 	
-	private int height;
+	private int height = 70;
 	private int width = 6;
 	private int lanternRadius = 10;
 	private int lightRadius = 20;
@@ -18,11 +18,9 @@ public class StreetLamp {
 	private Color lightColor = Color.ORANGE;
 	
 	// Konstruktor
-	public StreetLamp(int x, int y, int height) {
+	public StreetLamp(int x, int y) {
 		this.x = x;
-		this.y = y;
-		
-		this.height = height;
+		this.y = y - this.height;
 	}
 	
 	// Objekt-Methoden

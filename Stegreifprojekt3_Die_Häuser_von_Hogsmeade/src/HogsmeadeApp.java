@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 /**
  * Starter der Hogsmaede-Applikation.
  * 
- * Applikation wird in einem Standard-Fenster der Groesse 700 x 500 angezeigt. --> Abgeändert
+ * Applikation wird in einem Standard-Fenster der Groesse 700 x 500 angezeigt. --> Abgeändert thomann
  *
  * @author berdux
  *

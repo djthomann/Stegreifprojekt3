@@ -1,4 +1,5 @@
 import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -20,6 +21,11 @@ public class Sky {
 		for(int i = 0; i < clouds.length; i++) {
 			this.clouds[i] = new Cloud(i);
 		}
+	}
+	
+	public void drawSky(Graphics2D g, Color sky) {
+		g.setColor(sky);
+		g.fillRect(0, 0, HogsmeadeApp.getWidth(), HogsmeadeApp.getHeight());
 	}
 	
 	// Objekt-Methoden	
