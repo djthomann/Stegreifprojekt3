@@ -26,6 +26,11 @@ public class HogsmeadeApp {
 		return HEIGHT;
 	}
 	
+	/**
+	 * Startet die App, setzt die Eigentschaften des JFrame und fügt das JPanel Hogsmeade hinzu
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// Initialisierung des Frames
         JFrame jFrame = new JFrame();
