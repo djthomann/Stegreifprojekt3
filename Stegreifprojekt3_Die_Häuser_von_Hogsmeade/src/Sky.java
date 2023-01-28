@@ -14,9 +14,9 @@ import java.awt.Graphics2D;
 public class Sky {
 	
 	// Attribute
-	int amount;
-	Star[] stars;
-	Cloud[] clouds;
+	private int amount;
+	private Star[] stars;
+	private Cloud[] clouds;
 	
 	/**
 	 * Instanziiert die Himmel und Stern Arrays
@@ -82,6 +82,10 @@ public class Sky {
 		for(int i = 0; i < stars.length; i++) {
 			stars[i].draw(g);
 		}
+	}
+	
+	public int getAmount() {
+		return amount;
 	}
 	
 }
